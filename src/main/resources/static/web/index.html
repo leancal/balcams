@@ -1,0 +1,753 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!--====== Title ======-->
+    <title>The best gym - Balcam's</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/favicon-32x32.png" type="image/png">
+
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css">
+
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.4.5.2.min.css">
+
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body id="app">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+    <!--====== PRELOADER PART START ======-->
+
+    <div class="preloader">
+        <div class="loader">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL PURCHASE start -->
+
+    <!-- MODAL PURCHASE end-->
+    <!--====== PRELOADER PART ENDS ======-->
+
+    <!--====== HEADER PART START ======-->
+
+    <header class="header-area">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="d-flex flex-row justify-content-center align-items-center navbar-brand "
+                                href="index.html">
+                                <img class="pr-3" style="height: 70px;" src="assets/images/logo-Balcam-white.png"
+                                    alt="Logo">
+                                <div class="pt-2 d-flex flex-column justify-content-center align-items-center">
+                                    <h4 class="h4Balcam text-white">BALCAM<span class="yellow-color">'S</span></h4>
+                                    <h4 class="h4Balcam text-white">GYM</h4>
+                                </div>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        <a class="page-scroll" href="#home">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#courses">Lessons</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#about">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="./shop.html">Shop</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#pricing">Membership</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="./contact.html">Contact</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a :href="'./profile.html?id='+clients.id"><i class="lni lni-user"></i></a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a @click="logOut" href="./index.html"><i class="lni lni-power-switch"></i></a>
+                                    </li>
+                                </ul>
+                            </div> <!-- navbar collapse -->
+                        </nav> <!-- navbar -->
+                    </div>
+                </div> <!-- row -->
+            </div>
+            <div v-if="showAlertDanger" class="alert-danger-alan d-flex bg-danger justify-content-around align-items-center">
+                <div class="d-flex justify-content-center gap-5 w-50 align-items-center pr-105">
+                    <svg viewBox="0 0 40 40" class="tamaño-icono-alerta">
+                        <path
+                            d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z">
+                        </path>
+                    </svg>
+                    <span>You reached the limit of Lessons of your subscription. <span class="text-decoration-underline">Upgrade here!</span></p>
+                </div>
+                <div @click="showAlertDanger = !showAlertDanger">
+                    <i class="bi-x-lg bi "></i>
+                </div>
+            </div>
+            <div v-if="showSuccessAlert" class="alert-success-alan bg-success d-flex justify-content-around align-items-center">
+                <div class="d-flex justify-content-center gap-5 w-50 align-items-center pr-105">
+                    <svg viewBox="0 0 40 40" class="tamaño-icono-alerta">
+                        <path
+                            d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z">
+                        </path>
+                    </svg>
+                    <span>You have beeen inscripted successfully. <span class="text-decoration-underline">Go to memberships!</span></p>
+                </div>
+                <div @click="showSuccessAlert = !showSuccessAlert">
+                    <i class="bi-x-lg bi "></i>
+                </div>
+            </div> <!-- container -->
+        </div> <!-- navbar area -->
+        
+        <div id="home" class="header-hero bg_cover align-items-center">
+            <div class="videoText_container">
+                <video autoplay muted loop id="myVideo" class="landingVideo">
+                    <source src="./assets/images/videos/landingVideo.mp4" type="video/mp4">
+                </video>
+                <div class="header-hero-content text-center movements">
+                    <h3 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Balcam's is the
+                        best option</h3>
+                    <p class="wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">This gym is the best you can
+                        choose, if what you want is a real change in your physical appearance</p>
+                    <div class="header-hero-content text-center">
+
+                        <ul>
+                            <li><a href="./login.html" rel="nofollow" class="main-btn wow fadeInUp font-weight-bold"
+                                    data-wow-duration="1.3s" data-wow-delay="0.8s">Register FREE Now</a></li>
+                            <li><a href="./shop.html" class="main-btn main-btn-2 wow fadeInUp" data-wow-duration="1.3s"
+                                    data-wow-delay="1.2s">Shop NOW</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div> <!-- header hero -->
+    </header>
+
+    <!--====== HEADER PART ENDS ======-->
+
+    <!--====== COURSES PART START ======-->
+
+    <section id="courses" class="courses_area ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="section_title text-center pb-25">
+                        <span class="line"></span>
+                        <h3 class="title">Our Lessons</h3>
+                        <p>Our unique approach
+                            as part of our community, every dogpound member is matched with a team of trainers based on
+                            your unique goals and experiences. each member of this team will work closely with you to
+                            ensure you are always smashing your fitness goals!</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single_courses mt-30">
+                        <video autoplay muted loop id="myVideo">
+                            <source src="./assets/images/videos/landingVideo0.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="title"><a href="javascript:void(0)">Gym</a></h4>
+                        <p>Get the physique you want thanks to our personalized team in the fitness area. different
+                            exercise equipment is used and a routine is carried out according to days where the upper or
+                            lower body is worked</p>
+                    </div> <!-- single courses -->
+                </div>
+                <div class="col-md-4">
+                    <div class="single_courses mt-30">
+                        <video autoplay muted loop id="myVideo">
+                            <source src="./assets/images/videos/landingVideo2.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="title"><a href="javascript:void(0)">Body Building</a></h4>
+                        <p>Bodybuilding is a discipline that aims to burn fat and build muscle by lifting weights and
+                            performing anaerobic exercises.
+                            The idea of this practice is that the person is left with a marked, strong and defined body.
+                            Also maintain a symmetry between the torso and the legs.</p>
+                    </div> <!-- single courses -->
+                </div>
+                <div class="col-md-4">
+                    <div class="single_courses mt-30">
+                        <video autoplay muted loop id="myVideo">
+                            <source src="./assets/images/videos/landingVideo4.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="title"><a href="javascript:void(0)">Yoga</a></h4>
+                        <p>Yoga is a practice that connects the body, breath and mind. This practice uses physical
+                            postures, breathing exercises, and meditation to improve overall health. It helps among
+                            other things to lower your blood pressure and heart rate, help you relax, improve your
+                            self-confidence, reduce stress, improve your coordination, improve your concentration, help
+                            you sleep better, and more.</p>
+                    </div> <!-- single courses -->
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single_courses mt-30">
+                        <video autoplay muted loop id="myVideo">
+                            <source src="./assets/images/videos/landingVideo8.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="title"><a href="javascript:void(0)">Spinning</a></h4>
+                        <p>Spinning is a collective physical exercise, which is performed on a stationary bicycle to the
+                            rhythm of music, in which high-intensity cardiovascular work is carried out with very high
+                            intervention of the large muscle groups of the lower body.</p>
+                    </div> <!-- single courses -->
+                </div>
+
+                <div class="col-md-4">
+                    <div class="single_courses mt-30">
+                        <video autoplay muted loop id="myVideo">
+                            <source src="./assets/images/videos/landingVideo6.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="title"><a href="javascript:void(0)">Kick-boxing</a></h4>
+                        <p>Kick boxing is a contact sport that alternates boxing blows and martial arts kicks.
+                            Generally, this name is used to refer to those exercises that combine kicks and punches. It
+                            is a great sport that combines strength, resistance and aerobic exercise, which makes it
+                            very complete and beneficial.</p>
+                    </div> <!-- single courses -->
+                </div>
+                <div class="col-md-4">
+                    <div class="single_courses mt-30">
+                        <video autoplay muted loop id="myVideo">
+                            <source src="./assets/images/videos/landingVideo7.mp4" type="video/mp4">
+                        </video>
+                        <h4 class="title"><a href="javascript:void(0)">Crossfit</a></h4>
+                        <p>CrossFit is a type of functional exercise training, constantly varied, executed at high
+                            intensity. It is a program of strength and total physical conditioning, which is based on
+                            the increase of the ten most recognized physical capacities by specialists in sports
+                            training with weights. During the exercise, the aim is to develop muscle strength and tone
+                            and increase the functionality of the muscles to repeat the movements.</p>
+                    </div> <!-- single courses -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+    <!--====== COURSES PART ENDS ======-->
+
+    <!--====== ABOUT PART START ======-->
+
+    <section id="about" class="about_area pt-115 pb-120">
+        <div class="about_wrapper">
+            <div class="about_bg bg_cover d-none d-lg-block" style="background-image: url(assets/images/about.jpg)">
+            </div>
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-lg-10">
+                        <div class="about_content">
+                            <h2 class="about_title">20 YEARS OF EXPERIENCE</h2>
+                            <div class="about_content_wrapper">
+                                <div class="section_title">
+                                    <span class="line"></span>
+                                    <h3 class="title">Read About Some Advices</h3>
+                                    <p>Some tips to make your training as expected according to our specialists in
+                                        physical preparation and nutrition. </p>
+                                </div> <!-- section title -->
+                                <!-- <a href="javascript:void(0)"  class="main-btn">Read More</a> -->
+                                <a href="./blog.html" class="main-btn">Read More</a>
+                            </div> <!-- about content wrapper -->
+                        </div> <!-- about content -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- about wrapper -->
+    </section>
+
+    <!--====== ABOUT PART ENDS ======-->
+
+    <!--====== COUNTER PART START ======-->
+
+    <section id="counter" class="counter_area pt-70 pb-120 bg_cover"
+        style="background-image: url(assets/images/counter_bg.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="single_counter text-center mt-40">
+                        <i class="lni lni-users"></i>
+                        <span class="count counter">5345</span>
+                        <p>Satisfied Trainee</p>
+                    </div> <!-- single counter -->
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="single_counter text-center mt-40">
+                        <i class="lni lni-thumbs-up"></i>
+                        <span class="count counter">345</span>
+                        <p>Courses Completed</p>
+                    </div> <!-- single counter -->
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="single_counter text-center mt-40">
+                        <i class="lni lni-alarm-clock"></i>
+                        <span class="count counter">13</span>
+                        <p>Trainers</p>
+                    </div> <!-- single counter -->
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="single_counter text-center mt-40">
+                        <i class="lni lni-cup"></i>
+                        <span class="count counter">45</span>
+                        <p>Awards Won</p>
+                    </div> <!-- single counter -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+    <!--====== COUNTER PART ENDS ======-->
+
+    <!--====== TEAM PART START ======-->
+
+    <section id="team" class="team_area pt-105 pb-80">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="section_title text-center pb-55">
+                        <span class="line"></span>
+                        <h3 class="title">Our Team</h3>
+                        <p>The team of specialized people to help you achieve your goals, your objectives, to improve
+                            your quality of life, and improve how you see yourself on the outside, but also how you see
+                            yourself on the inside.</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_team text-center">
+                        <div class="team_image">
+                            <img src="assets/images/trainer1" alt="team">
+                        </div>
+                        <div class="team_content">
+                            <ul class="social">
+                            </ul>
+                            <h5 class="team_name">David Robinson</h5>
+                            <p>Fitness Trainer</p>
+                        </div>
+                    </div> <!-- single team -->
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_team text-center">
+                        <div class="team_image">
+                            <img src="assets/images/trainer2" alt="team">
+                        </div>
+                        <div class="team_content">
+                            <ul class="social">
+                            </ul>
+                            <h5 class="team_name">Michael Logan</h5>
+                            <p>Fitness Trainer</p>
+                        </div>
+                    </div> <!-- single team -->
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_team text-center">
+                        <div class="team_image">
+                            <img src="assets/images/trainer3" alt="team">
+                        </div>
+                        <div class="team_content">
+                            <ul class="social">
+
+                            </ul>
+                            <h5 class="team_name">Sarah Lennox</h5>
+                            <p>Fitness Trainer</p>
+                        </div>
+                    </div> <!-- single team -->
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single_team text-center">
+                        <div class="team_image">
+                            <img src="assets/images/trainer4.png" alt="team">
+                        </div>
+                        <div class="team_content">
+                            <ul class="social">
+                            </ul>
+                            <h5 class="team_name">Lisa Douglas</h5>
+                            <p>Fitness Trainer</p>
+                        </div>
+                    </div> <!-- single team -->
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+    </section>
+
+    <!--====== TEAM PART ENDS ======-->
+
+    <!--====== SCHEDULES START ======-->
+    <section id="schedules" class="schedule_area pt-105 pb-120 bg_cover"
+        style="background-image: url(assets/images/schedule_bg.jpg)">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="section_title section_title_2 text-center pb-25">
+                        <span class="line"></span>
+                        <h3 class="title">Lessons Schedules</h3>
+                        <h5 class="title">Gym Open 24 hours a day, 7 days a week.</h5>
+                        <p>Here you can see the schedules to register and attend the lessons that you are most
+                            interested in taking.</p>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center" >
+                <div class=" col-lg-3 col-sm-6" v-for="workout in workouts">
+                    
+                    <div v-if="clients== ''" role="button" class="position-relative single_schedule mt-30">
+                        <div>
+                            <p class="number">{{limitText(workout.fromDate)}}.</p>
+                        </div>
+                        <a href="/web/login.html">
+                            <span class="link1"></span>
+                        </a>
+                        <span class="time">{{workout.fromTime}}</span>
+                        <h4 class="title"><a href="javascript:void(0)">{{workouts.name}}</a></h4>
+                        <p>{{workout.coachName}}</p>
+                    </div>
+                    <div role="button" v-else @click="selectWorkout(workout.id)" class="single_schedule mt-30">
+                        <div>
+                            <p class="number">{{limitText(workout.fromDate)}}.</p>
+                        </div>
+                        <span class="time">{{workout.fromTime}}</span>
+                        <h4 class="title"><a href="javascript:void(0)">{{workouts.name}}</a></h4>
+                        <p>{{workout.coachName}}</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!--====== SCHEDULE ENDS ======-->
+    <!--====== PRICING START ======-->
+
+    <section id="pricing" class="pricing_area pt-140 pb-120">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8">
+                    <div class="section_title text-center pb-25">
+                        <span class="line"></span>
+                        <h3 class="title">Membership Plans</h3>
+                        <h5>September Membership Special</h5>
+                        <p>Huge savings with corp employee pricing.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="single_pricing mt-30">
+                        <div class="pricing_wrapper">
+                            <div class="pricing_header">
+                                <h4 class="title">Basic</h4>
+                                <span class="price"><span>$29</span> /Monthly</span>
+                            </div>
+                            <div class="pricing_content">
+                                <ul>
+                                    <li class="mt-3">3 Days a Week</li>
+                                    <li class="mt-3">Dedicated Trainer Allocated</li>
+                                    <li class="mt-3">Swimming pool included</li>
+                                    <li class="mt-3">Morning and Evening Batches</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div v-if="clients == ''" class="pricing_btn">
+                            <a  href="./login.html">Purchase Now</a>
+                        </div>
+                        <div v-else @click="openModal(29)" role="button" class="pricing_btn">
+                            <a >Purchase Now</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="single_pricing mt-30">
+                        <div class="pricing_wrapper">
+                            <div class="pricing_header">
+                                <h4 class="title">Standard</h4>
+                                <span class="price"><span>$49</span> /Monthly</span>
+                            </div>
+                            <div class="pricing_content">
+                                <ul>
+                                    <li class="mt-3">4 Days a Week</li>
+                                    <li class="mt-3">Dedicated Trainer and Nutricionist</li>
+                                    <li class="mt-3">Enabled for the use of all three gym lessons.</li>
+                                    <li class="mt-3">Morning and Evening Batches</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div v-if="clients == ''" class="pricing_btn pricing_btn_2">
+                            <a  href="./login.html">Purchase Now</a>
+                        </div>
+                        <div v-else @click="openModal(49)" role="button" class="pricing_btn">
+                            <a >Purchase Now</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-7 col-sm-9">
+                    <div class="single_pricing mt-30">
+                        <div class="pricing_wrapper">
+                            <div class="pricing_header">
+                                <h4 class="title">Premium</h4>
+                                <span class="price"><span>$99</span> /Monthly</span>
+                            </div>
+                            <div class="pricing_content">
+                                <ul>
+                                    <li class="mt-3">Free pass</li>
+                                    <li class="mt-3">High performance fitness team.</li>
+                                    <li class="mt-3">Enabled for the use of all gym lessons.</li>
+                                    <li class="mt-3">Batches all day.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div v-if="clients == ''"  class="pricing_btn">
+                            <a  href="./login.html">Purchase Now</a>
+                        </div>
+                        <div v-else @click="openModal(99)" role="button" class="pricing_btn">
+                            <a >Purchase Now</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--====== PRICING ENDS ======-->
+    <!--====== FOOTER PART START ======-->
+
+    <section id="footer" class="footer_area">
+        <div class="footer_widget mt-2 pb-100 pt-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="footer_info mt-45">
+                            <h4 class="footer_title">Contact</h4>
+                            <ul class="info">
+                                <li>Phone: 093826715212</li>
+                                <li><a href="https://wa.link/d73goe"><i class="lni lni-whatsapp"></i></a> Whatsapp</li>
+                                <li>Email: balcamscontact@gmail.com</li>
+                                <li>Location: Jackson Heights, New York, USA</li>
+                            </ul>
+                        </div> <!-- footer info -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="footer_info mt-45">
+                            <h4 class="footer_title">Course</h4>
+                            <ul class="info">
+                                <li>Gym</li>
+                                <li>Body Building</li>
+                                <li>Yoga</li>
+                                <li>Spinning</li>
+                                <li>Kick-boxing</li>
+                                <li>Crossfit</li>
+                            </ul>
+                        </div> <!-- footer info -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="footer_link mt-45">
+                            <h4 class="footer_title">Quick Link</h4>
+                            <ul class="link">
+                                <li><a href="#courses">Lessons</a></li>
+                                <li><a href="./blog.html">Advices</a></li>
+                                <li><a href="./shop.html">Shop</a></li>
+                                <li><a href="#">Membership</a></li>
+                                <li><a href="#">Home</a></li>
+                            </ul>
+                        </div> <!-- footer info -->
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="footer_social mt-45">
+                            <h4 class="footer_title">Follow Us On</h4>
+                            <ul class="social">
+                                <li><a href="https://www.facebook.com/"><i class="lni lni-facebook-filled"></i></a></li>
+                                <li><a href="https://twitter.com/"><i class="lni lni-twitter-original"></i></a></li>
+                                <li><a href="https://www.instagram.com/"><i class="lni lni-instagram-original"></i></a>
+                                </li>
+                                <li><a href="https://www.linkedin.com/"><i class="lni lni-linkedin-original"></i></a>
+                                </li>
+
+                            </ul>
+                        </div> <!-- footer info -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer widget -->
+
+        <div class="footer_copyright">
+            <div class="container">
+                <div class="copyright text-center">
+                    <p>Copyright &copy; 2022. Designed and Developed by Balcams Team</a></p>
+                </div> <!-- copyright -->
+            </div> <!-- container -->
+        </div> <!-- footer copyright -->
+    </section>
+    <div class="modal" :class="{'d-block': isOpen}">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content ">
+
+                <div class="modal-body d-flex flex-wrap flex-row position-relative">
+                    <i class="bi bi-x close-modal " @click="isOpen=false"></i>
+                    <h1 class="w-100 text-center">Purchase Subscription</h1>
+                    <form class="form-modal mt-2" action="">
+                        <div class="mb-3">
+                            <label class="form-label" for="cardNumber">Card Number</label>
+                            <input v-model="cardNumber" class="form-control" id="cardNumber" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="cardHolder">Card Holder</label>
+                            <input v-model="cardHolder" class="form-control" id="cardHolder" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="cardExp">Card Expirate</label>
+                            <input v-model="cardExp" class="form-control" id="cardExp" type="text">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="cardCvv">CVV</label>
+                            <input v-model="cardCvv" class="form-control" id="CardCvv" type="text">
+                        </div>
+                    </form>
+                    <div class="pl-5 mt-2">
+                        <div class="border p-5 d-flex flex-column gap-5">
+                            <h2 class="text-bold">Order Sumary</h2>
+                            <hr>
+                            <div class="d-flex flex-column">
+                                <div class="d-flex flex-row justify-content-between align-items-center m-3">
+                                    <p class="p-2">Subtotal</p>
+                                    <p>{{moneyFormat.format(subtotal)}}</p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center m-3 border-b">
+                                    <p class="p-2">Tax Estimate</p>
+                                    <p>{{moneyFormat.format(subtotal * taxEstimate)}}</p>
+                                </div>
+                                <div class="w-100 d-flex justify-content-between align-items-center m-3">
+                                    <h3 class="fw-bold">Order Total: </h3>
+                                    <h3 class="fw-bold">{{moneyFormat.format(subtotal * (1 + taxEstimate))}}
+                                    </h3>
+                                </div>
+                                <button @click="subscriptionPayment" class="btn btn-primary">Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--====== FOOTER PART ENDS ======-->
+
+    <!--====== BACK TOP TOP PART START ======-->
+
+    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+
+    <!--====== BACK TOP TOP PART ENDS ======-->
+
+    <!--====== PART START ======-->
+
+    <!--
+    <section class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-"></div>
+            </div>
+        </div>
+    </section>
+-->
+
+    <!--====== PART ENDS ======-->
+
+
+
+
+
+
+
+    <!--====== Jquery js ======-->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.4.5.2.min.js"></script>
+
+    <!--====== Slick js ======-->
+    <script src="assets/js/slick.min.js"></script>
+    
+
+    <!--====== Ajax Contact js ======-->
+    <script src="assets/js/ajax-contact.js"></script>
+
+    <!--====== Counter Up js ======-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+
+    <!--====== Magnific Popup js ======-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+
+    <!--====== Scrolling Nav js ======-->
+
+    <!--====== Axios ======-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <!--====== Vue ======-->
+    <script src="https://unpkg.com/vue@3"></script>
+
+
+    <!--====== Main js ======-->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

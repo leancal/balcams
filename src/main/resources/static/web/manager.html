@@ -1,0 +1,317 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <!--====== Title ======-->
+    <title>The best gym - Balcam's</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="assets/images/favicon2.png" type="image/png">
+
+    <!--====== Magnific Popup CSS ======-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+
+    <!--====== Slick CSS ======-->
+    <link rel="stylesheet" href="assets/css/slick.css">
+
+    <!--====== Line Icons CSS ======-->
+    <link rel="stylesheet" href="assets/css/LineIcons.2.0.css">
+
+    <!--====== Bootstrap CSS ======-->
+    <link rel="stylesheet" href="assets/css/bootstrap.4.5.2.min.css">
+
+
+    <!--====== Default CSS ======-->
+    <link rel="stylesheet" href="assets/css/default.css">
+
+    <!--====== Style CSS ======-->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!--====== Style CSS maps ======-->
+    <link rel="stylesheet" href="/assets/css/contactStyle.css">
+
+</head>
+
+<body id="app">
+    <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+    <!--====== HEADER PART START ======-->
+
+    <header class="header-area">
+        <div class="navbar-areaBlog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="d-flex flex-row justify-content-center align-items-center navbar-brand " href="index.html">
+                                <img class="pr-3" style="height: 70px;" src="assets/images/logo-Balcam-white.png" alt="Logo">
+                                <div class="pt-2 d-flex flex-column justify-content-center align-items-center">
+                                    <H4 class="h4Balcam">BALCAM <span class="yellow-color">'S</span></H4>
+                                    <h4 class="h4Balcam">GYM</h4>
+                                </div>
+                            </a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <ul id="nav" class="navbar-nav ml-auto">
+                                    <li class="nav-item active">
+                                        <a class="page-scroll" href="#home">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#courses">Lessons</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#about">About</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="./shop.html">Shop</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="#pricing">Membership</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="page-scroll" href="./contact.html">Contact</a>
+                                    </li>
+                                </ul>
+                            </div> <!-- navbar collapse -->
+                        </nav> <!-- navbar -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- navbar area -->
+
+
+    </header>
+    <!--====== HEADER PART ENDS ======-->
+
+
+    <!--====== BLOG PART START ======-->
+
+
+    <section id="contact" class="contact_area">
+        <div class="container" style="max-width: 100%;">
+            <div class="d-flex flex-column align-items-center">
+                <div class="col-lg-6">
+                    <div class="contact_form pt-105 pb-10">
+                        <div class="section_title pb-25">
+                            <span class="line"></span>
+                            <h3 class="title">Manager</h3>
+                        </div>
+                        <button type="button" class="btn btn-outline-warning mt-1 m-2 p-2">Add product</button>
+                        <button type="button" class="btn btn-outline-warning mt-1m-2 p-2">Delete product</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class=" justify-center">
+                <div class=" mb-3 col-md-10">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <img src="assets/images/manager1.jpg" class="img-fluid container" alt="...">
+                        </div>
+                        <div class="col-md-5 ">
+                            <div class="">
+                                <h3 class="card-title m-3 text-center">Add products to the store:</h3>
+                                <h5 class="m-2">Select Category</h5>
+                                <select v-model="category" class="form-select m-2" style="width:140px; height:30px;"
+                                    aria-label="Default select example">
+                                    <option value="none">Select a category</option>
+                                    <option :value="category.toUpperCase()" v-for="category in categories">{{category}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-7">
+                                <h5 class="m-2">Complete the requested information</h5>
+                                <input v-model="name" class="form-control" type="text" placeholder="Name products"
+                                    aria-label="default input example">
+                                <input v-model="description" class="form-control" type="text" placeholder="Description products"
+                                    aria-label="default input example">
+                                <input v-model="stock" class="form-control" type="text" placeholder="Stock"
+                                    aria-label="default input example">
+                                <input v-model="price" class="form-control" type="money" placeholder="Price"
+                                    aria-label="default input example">
+                                <input @change="onChangeFile($event)" type="file" name="file" id="file" >
+                                <button  @click="addNewProduct" type="button" class="btn btn-outline-warning mt-1">Add product</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-md-10">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <img src="assets/images/manager2.jpg" class="img-fluid container" alt="...">
+                        </div>
+                        <div class="col-md-5 ">
+                            <div class="">
+                                <h3 class="card-title m-3 text-center">Delete products from the store:</h3>
+                                <h5 class="m-2">Select Category</h5>
+                                <select class="form-select m-2" style="width:140px; height:30px;"
+                                    aria-label="Default select example">
+                                    <option selected></option>
+                                    <option value="1">Clothes</option>
+                                    <option value="2">Suplements</option>
+                                    <option value="3">Equipments</option>
+                                </select>
+                            </div>
+                            <div class="col-md-7">
+                                <h5 class="m-2">Complete the requested information</h5>
+                                <input class="form-control" type="text" placeholder="Name products"
+                                    aria-label="default input example">
+                                <!--     <input class="form-control" type="text" placeholder="Description products"
+                                    aria-label="default input example">
+                                <input class="form-control" type="text" placeholder="Stock"
+                                    aria-label="default input example">
+                                    <input class="form-control" type="money" placeholder="Price"
+                                    aria-label="default input example"> -->
+                                <button type="button" class="btn btn-outline-warning mt-1">Delete product</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+    </section>
+
+
+
+
+
+    <!--====== BLOG PART ENDS ======-->
+<!--====== FOOTER PART START ======-->
+    
+<section id="footer" class="footer_area">
+    <div class="footer_widget mt-2 pb-100 pt-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="footer_info mt-45">
+                        <h4 class="footer_title">Contact</h4>
+                        <ul class="info">
+                            <li>Phone: 093826715212</li>
+                            <li><a href="https://wa.link/d73goe"><i class="lni lni-whatsapp"></i></a>Whatsapp</li>
+                            <li>Email: balcamscontact@gmail.com</li>
+                            <li>Location:    Jackson Heights, New York, USA</li>
+                        </ul>
+                    </div> <!-- footer info -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="footer_info mt-45">
+                        <h4 class="footer_title">Course</h4>
+                        <ul class="info">
+                                <li>Gym</li>
+                                <li>Body Building</li>
+                                <li>Yoga</li>
+                                <li>Spinning</li>
+                                <li>Kick-boxing</li>
+                                <li>Crossfit</li>
+                        </ul>
+                    </div> <!-- footer info -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="footer_link mt-45">
+                        <h4 class="footer_title">Quick Link</h4>
+                        <ul class="link">
+                            <li><a href="#courses">Lessons</a></li>
+                            <li><a href="./blog.html">Advices</a></li>
+                            <li><a href="./shop.html">Shop</a></li>
+                            <li><a href="#">Membership</a></li>
+                            <li><a href="#">Home</a></li>
+                        </ul>
+                    </div> <!-- footer info -->
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="footer_social mt-45">
+                        <h4 class="footer_title">Follow Us On</h4>
+                        <ul class="social">
+                            <li><a href="https://www.facebook.com/"><i class="lni lni-facebook-filled"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="lni lni-twitter-original"></i></a></li>
+                            <li><a href="https://www.instagram.com/"><i class="lni lni-instagram-original"></i></a></li>
+                            <li><a href="https://www.linkedin.com/"><i class="lni lni-linkedin-original"></i></a></li>
+                           
+                        </ul>
+                    </div> <!-- footer info -->
+                </div>
+            </div>  <!-- row -->
+        </div> <!-- container -->
+    </div> <!-- footer widget -->
+    
+    <div class="footer_copyright">
+        <div class="container">
+            <div class="copyright text-center">
+                <p>Copyright &copy; 2022. Designed and Developed by Balcams Team</a></p>
+            </div>  <!-- copyright -->
+        </div> <!-- container -->
+    </div> <!-- footer copyright -->
+</section>
+
+<!--====== FOOTER PART ENDS ======-->
+
+    <!--====== BACK TOP TOP PART START ======-->
+
+    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
+
+    <!--====== BACK TOP TOP PART ENDS ======-->
+
+    <!--====== PART START ======-->
+
+    <!--
+    <section class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-"></div>
+            </div>
+        </div>
+    </section>
+-->
+
+    <!--====== PART ENDS ======-->
+
+
+
+
+
+
+
+    <!--====== Jquery js ======-->
+    <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/vendor/modernizr-3.7.1.min.js"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.4.5.2.min.js"></script>
+
+    <!--====== Slick js ======-->
+    <script src="assets/js/slick.min.js"></script>
+
+    <!--====== Ajax Contact js ======-->
+    <script src="assets/js/ajax-contact.js"></script>
+
+    <!--====== Counter Up js ======-->
+    <script src="assets/js/jquery.counterup.min.js"></script>
+    <script src="assets/js/waypoints.min.js"></script>
+
+    <!--====== Magnific Popup js ======-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+
+    <!--====== Scrolling Nav js ======-->
+
+
+    <!--====== Main js ======-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="assets/js/manager.js"></script>
+
+</body>
+
+</html>
